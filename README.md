@@ -1,24 +1,24 @@
-# ANCR-GUI USER GUIDE
+# Design Network Application User Guide
 
 ## Table of Contents:
-1. [Requirements/Setup](https://github.com/mjsyp/ancr-gui#requirementssetup)
-2. [System Dropdown](https://github.com/mjsyp/ancr-gui#system-dropdown)
-3. [Menubar](https://github.com/mjsyp/ancr-gui#menu-bar)
-	* [File](https://github.com/mjsyp/ancr-gui#file)
-	* [Edit](https://github.com/mjsyp/ancr-gui#edit)
-	* [View](https://github.com/mjsyp/ancr-gui#view)
-	* [Window](https://github.com/mjsyp/ancr-gui#window)
-	* [Analysis](https://github.com/mjsyp/ancr-gui#analysis)
-4. [Toolbar](https://github.com/mjsyp/ancr-gui#toolbar-buttons)
-5. [Node Properties](https://github.com/mjsyp/ancr-gui#node-properties)
-6. [Edge Properties](https://github.com/mjsyp/ancr-gui#edge-properties)
-7. [Docked Windows](https://github.com/mjsyp/ancr-gui#docked-windows)
+1. [Requirements/Setup](https://github.com/UM-ANCR/DNA#requirementssetup)
+2. [System Dropdown](https://github.com/UM-ANCR/DNA#system-dropdown)
+3. [Menubar](https://github.com/UM-ANCR/DNA#menu-bar)
+	* [File](https://github.com/UM-ANCR/DNA#file)
+	* [Edit](https://github.com/UM-ANCR/DNA#edit)
+	* [View](https://github.com/UM-ANCR/DNA#view)
+	* [Window](https://github.com/UM-ANCR/DNA#window)
+	* [Analysis](https://github.com/UM-ANCR/DNA#analysis)
+4. [Toolbar](https://github.com/UM-ANCR/DNA#toolbar-buttons)
+5. [Node Properties](https://github.com/UM-ANCR/DNA#node-properties)
+6. [Edge Properties](https://github.com/UM-ANCR/DNA#edge-properties)
+7. [Docked Windows](https://github.com/UM-ANCR/DNA#docked-windows)
 
 
 ## Requirements/Setup
 * requires: Python 2.7
 * install external modules: networkX, matplotlib, Pillow
-* clone github.com/mjsyp/ancr-gui in your preferred working directory
+* clone github.com/UM-ANCR/DNA in your preferred working directory
 * run main.py from command line/terminal
 
 
