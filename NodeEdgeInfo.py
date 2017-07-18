@@ -14,6 +14,7 @@
 from Tkinter import *
 from Component import *
 from Compartment import *
+from Residency import *
 import tkSimpleDialog
 import networkx as nx
 from datetime import datetime
@@ -46,6 +47,8 @@ class NodeEdgeInfo(Frame):
 		# create a StringVar that holds the selected option in the dropdown
 		self.v = StringVar()
 		self.v.set(self.optionList[0])
+		
+		
 
 		# actual dropdown
 		self.dropdown = OptionMenu(self.propGroup, self.v, *self.optionList, command=self.changeType)
@@ -87,6 +90,16 @@ class NodeEdgeInfo(Frame):
 					if int(widget.grid_info()['row']) == 1 or int(widget.grid_info()['row']) == 2:
 						widget.destroy()
 				self.compartmentInfo = Compartment(self.parent, self.leftFrame, self.index, self.G, self.manager)
+		if self.nodes != None:
+			if self.v.get() == "Residency":
+				for widget in self.parent.grid_slaves():
+					if int(widget.grid_info()['row']) == 1 or int(widget.grid_info()['row']) == 2:
+						widget.destroy()
+				try:
+					self.leftFrame.dockedWindows.subNetworkExit()
+				except AttributeError:
+					pass
+				self.residencyInfo = Residency(self.parent, self.leftFrame, self.index, self.G, self.manager,self.nodes)
 
 	def saveNodeAttributes(self):
 		titles = ['Name', 'Type', 'Notes']
@@ -128,6 +141,9 @@ class NodeEdgeInfo(Frame):
 		for i in range(0, len(titles)):
 			if (titles[i] not in self.G.edge[self.nodes[0]][self.nodes[1]]) or (self.G.edge[self.nodes[0]][self.nodes[1]][titles[i]] != values[i]):
 				self.G.edge[self.nodes[0]][self.nodes[1]][titles[i]] = values[i]
+		
+		if self.G.edge[self.nodes[0]][self.nodes[1]]['Type'] == 'Residency':
+			self.residencyInfo.saveEdgeAttributes()
 
 		# add to log file
 		log = datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ": Saved attributes of edge between node " 
