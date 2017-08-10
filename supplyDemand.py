@@ -63,32 +63,7 @@ class supplyDemand(Frame):
 			self.createNewDemand(systemLabel)
 
 
-	def updateNodeSizes(self):
-		if self.leftFrame.v.get() != 'All' and self.leftFrame.v.get() != 'Create New':
-			self.leftFrame.minDemand = 1000000000
-			self.leftFrame.maxDemand = -1
-			visibleNodes = []
 
-			# for each node on the canvas
-			for nodeitem in self.leftFrame.systemsCanvas.find_withtag('node'):
-				# if it has a demand value for current system we're in
-				if self.leftFrame.v.get() in self.G.node[nodeitem]:
-					visibleNodes.append(nodeitem) # add to a list of visible nodes
-
-					# find minimum and maximum values for this demand
-					thisDemand = self.G.node[nodeitem][self.leftFrame.v.get()]
-					if abs(thisDemand) < self.leftFrame.minDemand:
-						self.leftFrame.minDemand = abs(thisDemand)
-					if abs(thisDemand) > self.leftFrame.maxDemand:
-						self.leftFrame.maxDemand = abs(thisDemand)
-
-			# delete old '+' or '-' labels
-			self.leftFrame.systemsCanvas.delete('label')
-
-			# update node sizes
-			for nodeitem in visibleNodes:
-				self.leftFrame.normalNodeSize(nodeitem)
-				self.leftFrame.scaleNodeSize(nodeitem)
 
 	def saveEdgeAttributes(self):
 		# save demands values of this node

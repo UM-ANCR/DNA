@@ -619,7 +619,8 @@ class CanvasFrame(Frame):
 				for edgeitem in self.systemsCanvas.find_withtag('edge'):
 					nodes = self.edgeEndpoints(edgeitem) # find start and end nodes
 					if (self.systemsCanvas.itemcget(nodes[0], 'state') == 'normal') and \
-					   (self.systemsCanvas.itemcget(nodes[1], 'state') == 'normal'):
+					   (self.systemsCanvas.itemcget(nodes[1], 'state') == 'normal') and \
+					   self.v.get() in self.G.edge[nodes[0]][nodes[1]]:
 						self.systemsCanvas.itemconfig(edgeitem, state='normal')
 						self.systemsCanvas.itemconfig(edgeitem, arrow='last')
 					else:
