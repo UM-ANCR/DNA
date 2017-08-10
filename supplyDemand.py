@@ -39,6 +39,8 @@ class supplyDemand(Frame):
 		newInc = Checkbutton(self.demandGroup, variable = incVar)
 		newInc.grid(row=0+self.numDemands, column=1, padx=5, sticky=E+W)
 		self.systemDict[label] = incVar # save the check box widget in the dictionary systemDict
+		
+		self.numDemands += 1
 
 
 		# add the new demand/system to the main toolbar dropdown
