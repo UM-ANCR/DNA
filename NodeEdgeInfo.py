@@ -18,6 +18,7 @@ from Residency import *
 import tkSimpleDialog
 import networkx as nx
 from datetime import datetime
+from supplyDemand import supplyDemand
 
 class NodeEdgeInfo(Frame):
 	def __init__(self, parent, leftFrame, index, G, manager, nodes=None):
@@ -100,6 +101,15 @@ class NodeEdgeInfo(Frame):
 				except AttributeError:
 					pass
 				self.residencyInfo = Residency(self.parent, self.leftFrame, self.index, self.G, self.manager,self.nodes)
+			if self.v.get() == "Supply/Demand":
+				for widget in self.parent.grid_slaves():
+					if int(widget.grid_info()['row']) == 1 or int(widget.grid_info()['row']) == 2:
+						widget.destroy()
+				try:
+					self.leftFrame.dockedWindows.subNetworkExit()
+				except AttributeError:
+					pass
+				self.suppDemInfo = supplyDemand(self.parent, self.leftFrame, self.index, self.G, self.manager,self.nodes)
 
 	def saveNodeAttributes(self):
 		titles = ['Name', 'Type', 'Notes']
@@ -144,6 +154,8 @@ class NodeEdgeInfo(Frame):
 		
 		if self.G.edge[self.nodes[0]][self.nodes[1]]['Type'] == 'Residency':
 			self.residencyInfo.saveEdgeAttributes()
+		if self.G.edge[self.nodes[0]][self.nodes[1]]['Type'] == 'Supply/Demand':
+			self.suppDemInfo.saveEdgeAttributes()
 
 		# add to log file
 		log = datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ": Saved attributes of edge between node " 
